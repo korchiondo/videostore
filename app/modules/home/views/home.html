@@ -1,0 +1,118 @@
+<h1>Home</h1>
+<p>You're logged in!!</p>
+<p><a href="#/login">Logout</a></a></p>
+<!--<canvas class="chart chart-line" chart-data="data" chart-labels="labels"
+        chart-series="series" chart-click="onClick"></canvas>-->
+<div class="container">
+
+<!--    <div class="alert alert-info">
+        <p>Sort Type: {{ sortType }}</p>
+        <p>Sort Reverse: {{ sortReverse }}</p>
+        <p>Search Query: {{ searchFish }}</p>
+    </div>-->
+
+    <form>
+        <div class="form-group">
+            <p>Search by</p>
+            <label for="title">title:</label>
+            <input type="text" class="form-control" ng-model="search.title">
+            <label for="desc">description:</label>
+            <input type="text" class="form-control" ng-model="search.description">
+            <label for="cat">category:</label>
+            <input type="text" class="form-control" ng-model="search.cat">
+            <label for="actor">actor:</label>
+            <input type="text" class="form-control" ng-model="search.actor">
+            <label for="lang">language:</label>
+            <input type="text" class="form-control" ng-model="search.lang">
+
+            <ui-select ng-model="selectedCategory">
+                <ui-select-match>
+                    <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="category in categories | filter: $select.search">
+                    <span ng-bind="category"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </form>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <td>
+                <a href="#" ng-click="onSortClick('title')">
+                    Title
+                    <span ng-show="showCaret('title')" class="fa fa-caret-down"></span>
+                    <span ng-show="!showCaret('title')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-click="onSortClick('desc')">
+                    Description
+                    <span ng-show="showCaret('desc')" class="fa fa-caret-down"></span>
+                    <span ng-show="showCaret('desc')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-click="onSortClick('cat')">
+                    Category
+                    <span ng-show="showCaret('cat')" class="fa fa-caret-down"></span>
+                    <span ng-show="showCaret('cat')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-click="onSortClick('year')">
+                    Year
+                    <span ng-show="showCaret('year')" class="fa fa-caret-down"></span>
+                    <span ng-show="showCaret('year')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-click="onSortClick('lang')">
+                    Language
+                    <span ng-show="showCaret('lang')" class="fa fa-caret-down"></span>
+                    <span ng-show="showCaret('lang')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-click="onSortClick('length')">
+                    Length
+                    <span ng-show="showCaret('length')" class="fa fa-caret-down"></span>
+                    <span ng-show="showCaret('length')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-click="onSortClick('rating')">
+                    Raiting
+                    <span ng-show="showCaret('rating')" class="fa fa-caret-down"></span>
+                    <span ng-show="showCaret('rating')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-click="onSortClick('actors')">
+                    Actors
+                    <span ng-show="showCaret('actors')" class="fa fa-caret-down"></span>
+                    <span ng-show="showCaret('actors')" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+        </tr>
+        </thead>
+
+        <tbody>
+         <tr dir-paginate="video in data | itemsPerPage: 2 | orderBy:sortType:sortReverse | filter:search">
+            <td>{{ video.title }}</td>
+            <td>{{ video.desc }}</td>
+            <td>{{ video.cat }}</td>
+            <td>{{ video.year }}</td>
+            <td>{{ video.lang }}</td>
+            <td>{{ video.length }}</td>
+            <td>{{ video.rating }}</td>
+            <td>{{ video.actors }}</td>
+        </tr>
+        </tbody>
+
+    </table>
+    <dir-pagination-controls></dir-pagination-controls>
+
+</div>
